@@ -32,7 +32,6 @@
 <script>
     var filePassList;
     function filesSelected () {
-        // console.table(this.files);
         filePassList = [];
         const ul = document.querySelector(".list-group");
         ul.innerHTML = ""
@@ -64,6 +63,7 @@
     }
     document.querySelector("input[type=file]").addEventListener("change", filesSelected);
 
+    // not use in this version but worth to talk about
     function xhrOnload() {
         const badge = document.getElementById(this.responseText);
         badge.classList.remove("badge-primary");
