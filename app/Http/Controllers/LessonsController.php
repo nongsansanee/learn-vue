@@ -8,25 +8,25 @@ class LessonsController extends Controller
 {
     public function index()
     {
-        $files = $this->getDirContents(base_path('resources/views/lessons'));
+        $files = $this->getDirContents(base_path('resources\views\lessons'));
         $lessons = [];
         foreach ($files as $path) {
             if (strpos($path, '.blade.php') !== false) {
-                $fileName = str_replace(base_path('resources/views/'), '', str_replace('.blade.php', '', $path));
-                
+                $fileName = str_replace(base_path('resources\views\\'), '', str_replace('.blade.php', '', $path));
+
                 $lessons[] = [
-                    "view" => str_replace('/', '.', $fileName),
+                    "view" => str_replace('\\', '=>', $fileName),
                     "label" => basename($fileName)
                 ];
             }
         }
 
-        return view('lessons.index')->with(['lessons' => $lessons]);
+        return view('lessons\index')->with(['lessons' => $lessons]);
     }
 
     public function show($viewName)
     {
-        return view($viewName);
+        return view(str_replace('=>', '.', $viewName));
     }
 
     protected function getDirContents($dir, &$results = array()){
