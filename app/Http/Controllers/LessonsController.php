@@ -13,7 +13,8 @@ class LessonsController extends Controller
         foreach ($files as $path) {
             $path = str_replace('\\', '/', $path);
             if (strpos($path, '.blade.php') !== false) {
-                $fileName = str_replace(base_path('resources/views/'), '', str_replace('.blade.php', '', $path));
+                $basePath = str_replace('\\', '/', base_path('resources/views/'));
+                $fileName = str_replace($basePath, '', str_replace('.blade.php', '', $path));
 
                 $lessons[] = [
                     "view" => str_replace('/', '=>', $fileName),
