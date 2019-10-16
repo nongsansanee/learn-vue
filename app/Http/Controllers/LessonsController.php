@@ -16,9 +16,11 @@ class LessonsController extends Controller
                 $basePath = str_replace('\\', '/', base_path('resources/views/'));
                 $fileName = str_replace($basePath, '', str_replace('.blade.php', '', $path));
 
+                $baseName = basename($fileName);
+
                 $lessons[] = [
                     "view" => str_replace('/', '=>', $fileName),
-                    "label" => basename($fileName)
+                    "label" => strpos($baseName, '=') === false ? $baseName : explode('=', $baseName)[1]
                 ];
             }
         }
