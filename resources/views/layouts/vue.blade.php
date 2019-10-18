@@ -29,6 +29,14 @@
         }
     </style>
     @yield('head-style')
+    <style type="text/css">
+    .not-allow{
+        background: red;
+    }
+    .allow{
+        background: green;
+    }
+    </style>
 </head>
 
 <body>
