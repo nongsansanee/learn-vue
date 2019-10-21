@@ -8,6 +8,8 @@ class UploadsController extends Controller
 {
     public function store()
     {
+        return "aaaaa";
+        return $request->all();
         if (!request()->file('file')->isValid()) return response('invalid', 403);
     
     request()->file('file')->store('uploads');
